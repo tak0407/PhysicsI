@@ -31,4 +31,5 @@ npm run build   # dist/
 ```
 
 Vite + React 18 + TypeScript. `main` 브랜치에 푸시하면 GitHub Actions가 GitHub Pages로
-자동 배포합니다. 프로젝트 구조와 기여 방법은 [AGENTS.md](AGENTS.md)를 보세요.
+자동 배포합니다. 프로젝트 구조와 기여 방법은 [AGENTS.md](AGENTS.md), 앞으로의 계획은
+[ROADMAP.md](ROADMAP.md)를 보세요.
