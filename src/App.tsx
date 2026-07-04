@@ -19,6 +19,7 @@ import Photoelectric from './sims/Photoelectric'
 import TimeDilation from './sims/TimeDilation'
 import Resonance from './sims/Resonance'
 import LorentzForce from './sims/LorentzForce'
+import ElectricField from './sims/ElectricField'
 
 interface PageDef {
   id: string
@@ -141,6 +142,14 @@ const PAGES: PageDef[] = [
     desc: '속도에 수직인 힘은 원운동을 만듭니다 — 오로라와 입자가속기',
     category: '전자기',
     el: <LorentzForce />,
+  },
+  {
+    id: 'electricfield',
+    emoji: '⚡',
+    title: '전기장 놀이터',
+    desc: '전하를 놓으면 보이지 않는 전기장이 화살표와 시험 전하 운동으로 드러납니다',
+    category: '전자기',
+    el: <ElectricField />,
   },
   {
     id: 'timedilation',
