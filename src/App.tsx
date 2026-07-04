@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import type { ReactNode } from 'react'
 import Projectile from './sims/Projectile'
 import Pendulum from './sims/Pendulum'
 import Spring from './sims/Spring'
@@ -9,41 +10,161 @@ import Collision from './sims/Collision'
 import Orbit from './sims/Orbit'
 import Sandbox from './sims/Sandbox'
 
-const PAGES = [
-  { id: 'projectile', label: '🚀 포물선 운동', el: <Projectile /> },
-  { id: 'pendulum', label: '🕰️ 진자', el: <Pendulum /> },
-  { id: 'spring', label: '🌀 용수철', el: <Spring /> },
-  { id: 'incline', label: '⛰️ 경사면', el: <Incline /> },
-  { id: 'buoyancy', label: '🌊 부력', el: <Buoyancy /> },
-  { id: 'seesaw', label: '⚖️ 시소', el: <Seesaw /> },
-  { id: 'collision', label: '💥 충돌', el: <Collision /> },
-  { id: 'orbit', label: '🪐 행성 궤도', el: <Orbit /> },
-  { id: 'sandbox', label: '🧸 놀이터', el: <Sandbox /> },
-] as const
+interface PageDef {
+  id: string
+  emoji: string
+  title: string
+  desc: string
+  category: string
+  el: ReactNode
+}
 
-export default function App() {
-  const [page, setPage] = useState<string>('projectile')
+const PAGES: PageDef[] = [
+  {
+    id: 'projectile',
+    emoji: '🚀',
+    title: '포물선 운동',
+    desc: '각도와 속도를 바꿔 쏘아보고, 45°가 최적인 이유를 확인하세요',
+    category: '운동과 힘',
+    el: <Projectile />,
+  },
+  {
+    id: 'incline',
+    emoji: '⛰️',
+    title: '경사면과 마찰',
+    desc: '각도를 올리다 보면 어느 순간 블록이 미끄러집니다 — 임계각 찾기',
+    category: '운동과 힘',
+    el: <Incline />,
+  },
+  {
+    id: 'collision',
+    emoji: '💥',
+    title: '충돌과 운동량',
+    desc: '어떤 충돌에서도 운동량의 합은 보존됩니다. 반발 계수로 실험해 보세요',
+    category: '운동과 힘',
+    el: <Collision />,
+  },
+  {
+    id: 'pendulum',
+    emoji: '🕰️',
+    title: '단진자',
+    desc: '추를 드래그해서 놓아보세요. 주기는 놓는 높이와 무관합니다',
+    category: '진동',
+    el: <Pendulum />,
+  },
+  {
+    id: 'spring',
+    emoji: '🌀',
+    title: '용수철 진동',
+    desc: '훅의 법칙 F=−kx가 만드는 사인 곡선을 실시간 그래프로',
+    category: '진동',
+    el: <Spring />,
+  },
+  {
+    id: 'buoyancy',
+    emoji: '🌊',
+    title: '부력',
+    desc: '밀도 600이면 정확히 60%가 잠깁니다 — 아르키메데스 원리',
+    category: '유체와 회전',
+    el: <Buoyancy />,
+  },
+  {
+    id: 'seesaw',
+    emoji: '⚖️',
+    title: '시소와 돌림힘',
+    desc: '가벼운 추도 멀리 놓으면 이깁니다. m×d 균형 맞추기',
+    category: '유체와 회전',
+    el: <Seesaw />,
+  },
+  {
+    id: 'orbit',
+    emoji: '🪐',
+    title: '행성 궤도',
+    desc: '초기 속도에 따라 원, 타원, 탈출 — 만유인력과 케플러 법칙',
+    category: '우주',
+    el: <Orbit />,
+  },
+  {
+    id: 'sandbox',
+    emoji: '🧸',
+    title: '물리 놀이터',
+    desc: '물체를 쏟아붓고 집어 던지는 자유 공간 (Matter.js)',
+    category: '자유 놀이',
+    el: <Sandbox />,
+  },
+]
 
+const CATEGORIES = ['운동과 힘', '진동', '유체와 회전', '우주', '자유 놀이']
+
+function useHashRoute() {
+  const [hash, setHash] = useState(window.location.hash)
+  useEffect(() => {
+    const onChange = () => setHash(window.location.hash)
+    window.addEventListener('hashchange', onChange)
+    return () => window.removeEventListener('hashchange', onChange)
+  }, [])
+  return hash.replace(/^#\/?/, '')
+}
+
+function Home() {
   return (
     <>
-      <header className="site-header">
+      <header className="site-header hero">
         <h1>
           물리 놀이터 <span className="spark">⚡</span>
         </h1>
         <p>수식으로만 보던 물리 법칙을 직접 만지고, 던지고, 돌려보는 곳</p>
       </header>
-      <nav className="tabs">
-        {PAGES.map((p) => (
-          <button
-            key={p.id}
-            className={page === p.id ? 'active' : ''}
-            onClick={() => setPage(p.id)}
-          >
-            {p.label}
-          </button>
-        ))}
+      {CATEGORIES.map((cat) => (
+        <section key={cat} className="category">
+          <h3>{cat}</h3>
+          <div className="card-grid">
+            {PAGES.filter((p) => p.category === cat).map((p) => (
+              <a key={p.id} className="card" href={`#/${p.id}`}>
+                <span className="card-emoji">{p.emoji}</span>
+                <span className="card-body">
+                  <span className="card-title">{p.title}</span>
+                  <span className="card-desc">{p.desc}</span>
+                </span>
+              </a>
+            ))}
+          </div>
+        </section>
+      ))}
+    </>
+  )
+}
+
+export default function App() {
+  const route = useHashRoute()
+  const idx = PAGES.findIndex((p) => p.id === route)
+  const page = idx >= 0 ? PAGES[idx] : null
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [route])
+
+  if (!page) return <Home />
+
+  const prev = PAGES[(idx - 1 + PAGES.length) % PAGES.length]
+  const next = PAGES[(idx + 1) % PAGES.length]
+
+  return (
+    <>
+      <nav className="sim-topbar">
+        <a className="back-link" href="#/">
+          ← 실험 목록
+        </a>
       </nav>
-      {PAGES.find((p) => p.id === page)?.el}
+      {page.el}
+      <nav className="sim-pager">
+        <a href={`#/${prev.id}`}>
+          ← {prev.emoji} {prev.title}
+        </a>
+        <a href={`#/${next.id}`}>
+          {next.emoji} {next.title} →
+        </a>
+      </nav>
     </>
   )
 }

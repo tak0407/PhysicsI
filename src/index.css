@@ -53,37 +53,123 @@ body {
   font-size: 0.95rem;
 }
 
-.tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 24px;
+.site-header.hero {
+  margin: 24px 0 32px;
 }
 
-.tabs button {
+.site-header.hero h1 {
+  font-size: 2.1rem;
+}
+
+.category {
+  margin-bottom: 28px;
+}
+
+.category h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.card {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: var(--panel);
   border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.15s ease, transform 0.15s ease, background 0.15s ease;
+}
+
+.card:hover {
+  border-color: var(--accent);
+  background: var(--panel-2);
+  transform: translateY(-2px);
+}
+
+.card-emoji {
+  font-size: 1.9rem;
+  line-height: 1.2;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.card-title {
+  font-weight: 700;
+  font-size: 1.02rem;
+}
+
+.card-desc {
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.sim-topbar {
+  margin-bottom: 18px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
   background: var(--panel);
   color: var(--muted);
-  padding: 9px 16px;
-  min-height: 42px;
-  border-radius: 999px;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: all 0.15s ease;
-  font-family: inherit;
+  text-decoration: none;
+  font-size: 0.92rem;
+  transition: border-color 0.15s ease, color 0.15s ease;
   touch-action: manipulation;
 }
 
-.tabs button:hover {
+.back-link:hover {
   border-color: var(--accent);
   color: var(--text);
 }
 
-.tabs button.active {
-  background: var(--accent);
+.sim-pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.sim-pager a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 46px;
+  padding: 0 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--panel);
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.92rem;
+  transition: border-color 0.15s ease, color 0.15s ease;
+  touch-action: manipulation;
+}
+
+.sim-pager a:hover {
   border-color: var(--accent);
-  color: #fff;
-  font-weight: 600;
+  color: var(--text);
 }
 
 .sim-page h2 {
