@@ -14,6 +14,7 @@ import QuantumBox from './sims/QuantumBox'
 import Tunneling from './sims/Tunneling'
 import DoublePendulum from './sims/DoublePendulum'
 import Doppler from './sims/Doppler'
+import StandingWave from './sims/StandingWave'
 import GasBox from './sims/GasBox'
 import Entropy from './sims/Entropy'
 import Photoelectric from './sims/Photoelectric'
@@ -95,6 +96,14 @@ const PAGES: PageDef[] = [
     desc: '지나가는 사이렌 소리가 변하는 이유 — 실제 소리로 들어보세요',
     category: '파동과 소리',
     el: <Doppler />,
+  },
+  {
+    id: 'standingwave',
+    emoji: '🎸',
+    title: '정상파와 배음',
+    desc: '기타 줄의 마디와 배를 보며 배음이 왜 정수배로만 나는지 들어보세요',
+    category: '파동과 소리',
+    el: <StandingWave />,
   },
   {
     id: 'gasbox',
