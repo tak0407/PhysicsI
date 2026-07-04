@@ -65,11 +65,13 @@ body {
   background: var(--panel);
   color: var(--muted);
   padding: 9px 16px;
+  min-height: 42px;
   border-radius: 999px;
   font-size: 0.95rem;
   cursor: pointer;
   transition: all 0.15s ease;
   font-family: inherit;
+  touch-action: manipulation;
 }
 
 .tabs button:hover {
@@ -146,9 +148,49 @@ body {
   font-weight: 600;
 }
 
+/* 손가락으로 잡기 쉽게 트랙·썸을 직접 그린다 */
 .slider input[type='range'] {
-  accent-color: var(--accent);
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 34px; /* 실제 터치 영역 */
+  background: transparent;
   cursor: pointer;
+  touch-action: manipulation;
+}
+
+.slider input[type='range']::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+}
+
+.slider input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid #fff;
+  margin-top: -8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.slider input[type='range']::-moz-range-track {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+}
+
+.slider input[type='range']::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
 .btn {
@@ -158,10 +200,12 @@ body {
   font-weight: 700;
   font-size: 0.95rem;
   padding: 10px 20px;
+  min-height: 44px;
   border-radius: 10px;
   cursor: pointer;
   font-family: inherit;
   transition: filter 0.15s ease;
+  touch-action: manipulation;
 }
 
 .btn:hover {
@@ -226,5 +270,30 @@ body {
 
   .slider {
     min-width: 100%;
+  }
+
+  /* 손가락 기준 터치 타깃 확대 */
+  .controls .btn {
+    flex: 1 1 auto;
+    min-height: 48px;
+  }
+
+  .slider input[type='range'] {
+    height: 40px;
+  }
+
+  .slider input[type='range']::-webkit-slider-thumb {
+    width: 26px;
+    height: 26px;
+    margin-top: -10px;
+  }
+
+  .slider input[type='range']::-moz-range-thumb {
+    width: 26px;
+    height: 26px;
+  }
+
+  .readout {
+    flex: 1 1 40%;
   }
 }
