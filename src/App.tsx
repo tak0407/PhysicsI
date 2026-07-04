@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Projectile from './sims/Projectile'
 import Pendulum from './sims/Pendulum'
+import Spring from './sims/Spring'
 import Collision from './sims/Collision'
 import Orbit from './sims/Orbit'
 import Sandbox from './sims/Sandbox'
@@ -8,6 +9,7 @@ import Sandbox from './sims/Sandbox'
 const PAGES = [
   { id: 'projectile', label: '🚀 포물선 운동', el: <Projectile /> },
   { id: 'pendulum', label: '🕰️ 진자', el: <Pendulum /> },
+  { id: 'spring', label: '🌀 용수철', el: <Spring /> },
   { id: 'collision', label: '💥 충돌', el: <Collision /> },
   { id: 'orbit', label: '🪐 행성 궤도', el: <Orbit /> },
   { id: 'sandbox', label: '🧸 놀이터', el: <Sandbox /> },
