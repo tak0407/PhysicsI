@@ -214,3 +214,17 @@ body {
   color: var(--muted);
   font-size: 0.85rem;
 }
+
+@media (max-width: 600px) {
+  #root {
+    padding: 16px 12px 60px;
+  }
+
+  .sim-canvas {
+    height: 340px;
+  }
+
+  .slider {
+    min-width: 100%;
+  }
+}

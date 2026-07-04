@@ -13,8 +13,7 @@ interface Ball {
 }
 
 const COLORS = ['#5b8cff', '#ffb454', '#4ade80', '#f472b6', '#22d3ee']
-const SCALE = 6.5 // px per meter
-const ORIGIN_X = 56
+const ORIGIN_X = 40
 
 export default function Projectile() {
   const [angle, setAngle] = useState(45)
@@ -49,8 +48,20 @@ export default function Projectile() {
   const canvasRef = useAnimationCanvas((ctx, { w, h }, dt) => {
     const p = paramsRef.current
     const groundY = h - 44
-    const toX = (m: number) => ORIGIN_X + m * SCALE
-    const toY = (m: number) => groundY - m * SCALE
+
+    // 자동 축척: 예상 궤적과 이미 날아간 공들이 모두 화면에 들어오게 한다
+    const pr = (p.angle * Math.PI) / 180
+    let extentX = Math.max((p.speed ** 2 * Math.sin(2 * pr)) / p.g, 15)
+    let extentY = Math.max((p.speed * Math.sin(pr)) ** 2 / (2 * p.g), 8)
+    for (const b of ballsRef.current) {
+      for (const t of b.trail) {
+        if (t.x > extentX) extentX = t.x
+        if (t.y > extentY) extentY = t.y
+      }
+    }
+    const scale = Math.min((w - ORIGIN_X - 24) / extentX, (groundY - 30) / extentY, 8)
+    const toX = (m: number) => ORIGIN_X + m * scale
+    const toY = (m: number) => groundY - m * scale
 
     for (const b of ballsRef.current) {
       if (b.landed) continue
@@ -76,7 +87,9 @@ export default function Projectile() {
     ctx.fillStyle = '#93a0c4'
     ctx.font = '11px sans-serif'
     ctx.textAlign = 'center'
-    for (let m = 0; toX(m) < w - 20; m += 20) {
+    // 라벨이 ~70px 간격이 되도록 눈금 간격을 고른다
+    const tickStep = [5, 10, 20, 25, 50, 100, 200].find((s) => s * scale >= 70) ?? 200
+    for (let m = 0; toX(m) < w - 20; m += tickStep) {
       ctx.fillRect(toX(m) - 0.5, groundY, 1, 6)
       ctx.fillText(`${m}m`, toX(m), groundY + 22)
     }

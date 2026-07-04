@@ -12,7 +12,9 @@
       "Bash(git commit -m '물리 놀이터: 인터랙티브 물리 법칙 시뮬레이션 사이트 *)",
       "Bash(git rm *)",
       "Bash(git commit -q -m '빌드 캐시 파일 gitignore *)",
-      "Bash(gh repo *)"
+      "Bash(gh repo *)",
+      "Bash(gh api *)",
+      "Bash(gh run *)"
     ]
   }
 }
