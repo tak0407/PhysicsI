@@ -3,6 +3,8 @@ import Projectile from './sims/Projectile'
 import Pendulum from './sims/Pendulum'
 import Spring from './sims/Spring'
 import Incline from './sims/Incline'
+import Buoyancy from './sims/Buoyancy'
+import Seesaw from './sims/Seesaw'
 import Collision from './sims/Collision'
 import Orbit from './sims/Orbit'
 import Sandbox from './sims/Sandbox'
@@ -12,6 +14,8 @@ const PAGES = [
   { id: 'pendulum', label: '🕰️ 진자', el: <Pendulum /> },
   { id: 'spring', label: '🌀 용수철', el: <Spring /> },
   { id: 'incline', label: '⛰️ 경사면', el: <Incline /> },
+  { id: 'buoyancy', label: '🌊 부력', el: <Buoyancy /> },
+  { id: 'seesaw', label: '⚖️ 시소', el: <Seesaw /> },
   { id: 'collision', label: '💥 충돌', el: <Collision /> },
   { id: 'orbit', label: '🪐 행성 궤도', el: <Orbit /> },
   { id: 'sandbox', label: '🧸 놀이터', el: <Sandbox /> },
