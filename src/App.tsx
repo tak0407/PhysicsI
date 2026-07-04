@@ -15,6 +15,7 @@ import Tunneling from './sims/Tunneling'
 import DoublePendulum from './sims/DoublePendulum'
 import Doppler from './sims/Doppler'
 import GasBox from './sims/GasBox'
+import Entropy from './sims/Entropy'
 import Photoelectric from './sims/Photoelectric'
 import TimeDilation from './sims/TimeDilation'
 import Resonance from './sims/Resonance'
@@ -102,6 +103,14 @@ const PAGES: PageDef[] = [
     desc: '분자 수백 개가 벽을 두드리면 압력이 됩니다 — PV=NkT',
     category: '열역학',
     el: <GasBox />,
+  },
+  {
+    id: 'entropy',
+    emoji: '⏳',
+    title: '엔트로피와 시간의 화살',
+    desc: '칸막이를 열면 기체는 섞입니다 — 작은 계에서만 드문 되돌림이 보입니다',
+    category: '열역학',
+    el: <Entropy />,
   },
   {
     id: 'buoyancy',
