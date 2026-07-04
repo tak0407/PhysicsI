@@ -22,6 +22,7 @@ import TimeDilation from './sims/TimeDilation'
 import Resonance from './sims/Resonance'
 import LorentzForce from './sims/LorentzForce'
 import ElectricField from './sims/ElectricField'
+import RadioactiveDecay from './sims/RadioactiveDecay'
 
 interface PageDef {
   id: string
@@ -200,6 +201,14 @@ const PAGES: PageDef[] = [
     desc: '에너지가 부족해도 벽을 통과합니다 — 슈뢰딩거 방정식 실시간 풀이',
     category: '양자',
     el: <Tunneling />,
+  },
+  {
+    id: 'decay',
+    emoji: '☢️',
+    title: '방사성 붕괴와 반감기',
+    desc: '개별 원자는 완전한 우연, 수백 개가 모이면 완벽한 규칙',
+    category: '양자',
+    el: <RadioactiveDecay />,
   },
   {
     id: 'sandbox',
