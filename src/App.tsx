@@ -10,6 +10,8 @@ import Collision from './sims/Collision'
 import Orbit from './sims/Orbit'
 import Sandbox from './sims/Sandbox'
 import DoubleSlit from './sims/DoubleSlit'
+import QuantumBox from './sims/QuantumBox'
+import Tunneling from './sims/Tunneling'
 
 interface PageDef {
   id: string
@@ -92,6 +94,22 @@ const PAGES: PageDef[] = [
     desc: '전자를 한 알씩 쏘는데 파동 무늬가 — 관측하면 사라집니다',
     category: '양자',
     el: <DoubleSlit />,
+  },
+  {
+    id: 'quantumbox',
+    emoji: '📦',
+    title: '상자 속 입자',
+    desc: '갇힌 입자는 아무 에너지나 못 가집니다 — E ∝ n² 양자화',
+    category: '양자',
+    el: <QuantumBox />,
+  },
+  {
+    id: 'tunneling',
+    emoji: '🧱',
+    title: '양자 터널링',
+    desc: '에너지가 부족해도 벽을 통과합니다 — 슈뢰딩거 방정식 실시간 풀이',
+    category: '양자',
+    el: <Tunneling />,
   },
   {
     id: 'sandbox',
