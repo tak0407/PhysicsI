@@ -140,3 +140,16 @@
 
 22개 실험 / 10개 카테고리. 다음 작업 후보는 ROADMAP.md 기준 M3의 파비콘/OG 메타태그,
 또는 실험이 20개를 넘겼으므로 홈 검색.
+
+## 2026-07-04 — 사이트 공유 품질: 파비콘과 OG 썸네일
+
+- ROADMAP M3의 첫 항목 구현. 사이트를 공유했을 때 제목·설명·큰 이미지가 바로 보이도록
+  `index.html`에 한국어 description, canonical, Open Graph, Twitter 카드 메타태그를 추가
+- 자산은 `public/favicon.svg`, `public/apple-touch-icon.png`, `public/og-image.png`로 구성.
+  OG 이미지는 홈 화면의 카드 그리드와 여러 물리 실험을 축약한 정적 썸네일로 제작
+- Vite의 GitHub Pages base를 존중하도록 파비콘 링크는 `%BASE_URL%`를 사용하고,
+  OG/Twitter 이미지는 공유 크롤러가 접근할 수 있게 라이브 절대 URL을 사용
+
+### 현재 상태
+
+22개 실험 / 10개 카테고리. 다음 작업 후보는 ROADMAP.md 기준 M3의 홈 검색.

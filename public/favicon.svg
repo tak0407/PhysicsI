@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">물리 놀이터</title>
+  <defs>
+    <radialGradient id="bg" cx="28%" cy="18%" r="80%">
+      <stop offset="0" stop-color="#2f63ff" />
+      <stop offset="0.52" stop-color="#141a2e" />
+      <stop offset="1" stop-color="#0b1020" />
+    </radialGradient>
+    <linearGradient id="bolt" x1="17" x2="46" y1="12" y2="53" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffdd67" />
+      <stop offset="1" stop-color="#ff8f3f" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#bg)" />
+  <path
+    d="M12 38c10 7 29 7 40-1M12 26c12-8 30-8 41 1"
+    fill="none"
+    stroke="#82a6ff"
+    stroke-width="3.4"
+    stroke-linecap="round"
+    opacity="0.86"
+  />
+  <circle cx="48" cy="25" r="5.2" fill="#4ade80" />
+  <path d="M34 8 19 35h12l-4 21 18-30H32z" fill="url(#bolt)" stroke="#fff4be" stroke-width="1.5" />
+</svg>
