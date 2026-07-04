@@ -18,6 +18,7 @@ import GasBox from './sims/GasBox'
 import Photoelectric from './sims/Photoelectric'
 import TimeDilation from './sims/TimeDilation'
 import Resonance from './sims/Resonance'
+import LorentzForce from './sims/LorentzForce'
 
 interface PageDef {
   id: string
@@ -134,6 +135,14 @@ const PAGES: PageDef[] = [
     el: <DoubleSlit />,
   },
   {
+    id: 'lorentz',
+    emoji: '🧲',
+    title: '자기장 속 하전입자',
+    desc: '속도에 수직인 힘은 원운동을 만듭니다 — 오로라와 입자가속기',
+    category: '전자기',
+    el: <LorentzForce />,
+  },
+  {
     id: 'timedilation',
     emoji: '⏱️',
     title: '시간 지연',
@@ -180,6 +189,7 @@ const CATEGORIES = [
   '진동',
   '파동과 소리',
   '유체와 회전',
+  '전자기',
   '열역학',
   '우주',
   '상대성',
