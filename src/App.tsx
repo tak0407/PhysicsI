@@ -12,6 +12,12 @@ import Sandbox from './sims/Sandbox'
 import DoubleSlit from './sims/DoubleSlit'
 import QuantumBox from './sims/QuantumBox'
 import Tunneling from './sims/Tunneling'
+import DoublePendulum from './sims/DoublePendulum'
+import Doppler from './sims/Doppler'
+import GasBox from './sims/GasBox'
+import Photoelectric from './sims/Photoelectric'
+import TimeDilation from './sims/TimeDilation'
+import Resonance from './sims/Resonance'
 
 interface PageDef {
   id: string
@@ -64,6 +70,38 @@ const PAGES: PageDef[] = [
     el: <Spring />,
   },
   {
+    id: 'doublependulum',
+    emoji: '🌪️',
+    title: '이중 진자 (카오스)',
+    desc: '0.01° 차이가 완전히 다른 운명으로 — 나비 효과를 눈으로',
+    category: '진동',
+    el: <DoublePendulum />,
+  },
+  {
+    id: 'resonance',
+    emoji: '🎡',
+    title: '공명',
+    desc: '리듬만 맞으면 작은 힘으로 그네가 폭발적으로 커집니다',
+    category: '진동',
+    el: <Resonance />,
+  },
+  {
+    id: 'doppler',
+    emoji: '🚑',
+    title: '도플러 효과',
+    desc: '지나가는 사이렌 소리가 변하는 이유 — 실제 소리로 들어보세요',
+    category: '파동과 소리',
+    el: <Doppler />,
+  },
+  {
+    id: 'gasbox',
+    emoji: '🔥',
+    title: '기체 분자 운동',
+    desc: '분자 수백 개가 벽을 두드리면 압력이 됩니다 — PV=NkT',
+    category: '열역학',
+    el: <GasBox />,
+  },
+  {
     id: 'buoyancy',
     emoji: '🌊',
     title: '부력',
@@ -96,6 +134,22 @@ const PAGES: PageDef[] = [
     el: <DoubleSlit />,
   },
   {
+    id: 'timedilation',
+    emoji: '⏱️',
+    title: '시간 지연',
+    desc: '빠르게 움직이는 시계는 느리게 갑니다 — 빛 시계로 확인',
+    category: '상대성',
+    el: <TimeDilation />,
+  },
+  {
+    id: 'photoelectric',
+    emoji: '💡',
+    title: '광전 효과',
+    desc: '빨간빛은 아무리 세도 안 되는 이유 — 아인슈타인의 노벨상',
+    category: '양자',
+    el: <Photoelectric />,
+  },
+  {
     id: 'quantumbox',
     emoji: '📦',
     title: '상자 속 입자',
@@ -121,7 +175,17 @@ const PAGES: PageDef[] = [
   },
 ]
 
-const CATEGORIES = ['운동과 힘', '진동', '유체와 회전', '우주', '양자', '자유 놀이']
+const CATEGORIES = [
+  '운동과 힘',
+  '진동',
+  '파동과 소리',
+  '유체와 회전',
+  '열역학',
+  '우주',
+  '상대성',
+  '양자',
+  '자유 놀이',
+]
 
 function useHashRoute() {
   const [hash, setHash] = useState(window.location.hash)
