@@ -27,7 +27,8 @@
 ### M3. 사이트 품질 (코드 적고 효과 큼)
 - [x] 2026-07-04 **파비콘 + OG 메타태그** — index.html에 title/description/og:image,
       Twitter 카드, `favicon.svg`, `og-image.png` 공유 썸네일 추가
-- [ ] **홈 검색** — 실험 20개 넘으면. PAGES의 title/desc 대상 간단 필터
+- [x] 2026-07-04 **홈 검색** — 실험 20개 넘으면. PAGES의 title/desc/category 대상
+      간단 필터, 결과 수와 빈 결과 상태 포함
 
 ## 백로그 (아이디어, 순서 미정)
 
@@ -89,3 +90,5 @@
       상자 속 입자와 같은 경계조건 설명 — 22개 실험 / 10개 카테고리
 - [x] 2026-07-04 — 파비콘 + OG 메타태그 추가: 한국어 description, canonical,
       Open Graph/Twitter 카드, 공유 썸네일 이미지
+- [x] 2026-07-04 — 홈 검색 추가: 제목·설명·카테고리 필터, 결과 수 표시,
+      검색 초기화와 빈 결과 상태

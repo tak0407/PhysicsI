@@ -235,6 +235,20 @@ function useHashRoute() {
 }
 
 function Home() {
+  const [search, setSearch] = useState('')
+  const query = search.trim().toLocaleLowerCase('ko-KR')
+  const visiblePages = query
+    ? PAGES.filter((p) =>
+        [p.title, p.desc, p.category].some((text) =>
+          text.toLocaleLowerCase('ko-KR').includes(query),
+        ),
+      )
+    : PAGES
+  const categoriesWithPages = CATEGORIES.map((cat) => ({
+    cat,
+    pages: visiblePages.filter((p) => p.category === cat),
+  })).filter(({ pages }) => pages.length > 0)
+
   return (
     <>
       <header className="site-header hero">
@@ -243,11 +257,38 @@ function Home() {
         </h1>
         <p>수식으로만 보던 물리 법칙을 직접 만지고, 던지고, 돌려보는 곳</p>
       </header>
-      {CATEGORIES.map((cat) => (
+
+      <div className="home-search" role="search">
+        <span className="search-icon" aria-hidden="true">
+          🔎
+        </span>
+        <input
+          type="search"
+          value={search}
+          onChange={(event) => setSearch(event.target.value)}
+          aria-label="실험 검색"
+          placeholder="실험 이름, 설명, 카테고리 검색"
+        />
+        <span className="search-count">
+          {visiblePages.length}/{PAGES.length}
+        </span>
+        {search && (
+          <button
+            type="button"
+            className="search-clear"
+            onClick={() => setSearch('')}
+            aria-label="검색 지우기"
+          >
+            지우기
+          </button>
+        )}
+      </div>
+
+      {categoriesWithPages.map(({ cat, pages }) => (
         <section key={cat} className="category">
           <h3>{cat}</h3>
           <div className="card-grid">
-            {PAGES.filter((p) => p.category === cat).map((p) => (
+            {pages.map((p) => (
               <a key={p.id} className="card" href={`#/${p.id}`}>
                 <span className="card-emoji">{p.emoji}</span>
                 <span className="card-body">
@@ -259,6 +300,14 @@ function Home() {
           </div>
         </section>
       ))}
+      {visiblePages.length === 0 && (
+        <div className="empty-state">
+          <strong>검색 결과가 없습니다</strong>
+          <button type="button" className="btn secondary" onClick={() => setSearch('')}>
+            전체 보기
+          </button>
+        </div>
+      )}
     </>
   )
 }
