@@ -9,6 +9,7 @@ import Seesaw from './sims/Seesaw'
 import Collision from './sims/Collision'
 import Orbit from './sims/Orbit'
 import Sandbox from './sims/Sandbox'
+import DoubleSlit from './sims/DoubleSlit'
 
 interface PageDef {
   id: string
@@ -85,6 +86,14 @@ const PAGES: PageDef[] = [
     el: <Orbit />,
   },
   {
+    id: 'doubleslit',
+    emoji: '⚛️',
+    title: '이중슬릿 실험',
+    desc: '전자를 한 알씩 쏘는데 파동 무늬가 — 관측하면 사라집니다',
+    category: '양자',
+    el: <DoubleSlit />,
+  },
+  {
     id: 'sandbox',
     emoji: '🧸',
     title: '물리 놀이터',
@@ -94,7 +103,7 @@ const PAGES: PageDef[] = [
   },
 ]
 
-const CATEGORIES = ['운동과 힘', '진동', '유체와 회전', '우주', '자유 놀이']
+const CATEGORIES = ['운동과 힘', '진동', '유체와 회전', '우주', '양자', '자유 놀이']
 
 function useHashRoute() {
   const [hash, setHash] = useState(window.location.hash)
