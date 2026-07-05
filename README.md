@@ -31,6 +31,17 @@ npm run dev     # http://localhost:5173
 npm run build   # dist/
 ```
 
+## Google Analytics
+
+GA4 측정을 켜려면 `.env.local` 또는 GitHub Actions 변수에 Measurement ID를 넣습니다.
+
+```bash
+VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+```
+
+GitHub Pages 배포에서는 저장소 Settings → Secrets and variables → Actions → Variables에
+`VITE_GA_MEASUREMENT_ID`를 추가하면 다음 배포부터 적용됩니다.
+
 Vite + React 18 + TypeScript. `main` 브랜치에 푸시하면 GitHub Actions가 GitHub Pages로
 자동 배포합니다. 프로젝트 구조와 기여 방법은 [AGENTS.md](AGENTS.md), 앞으로의 계획은
 [ROADMAP.md](ROADMAP.md)를 보세요.

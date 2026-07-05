@@ -23,6 +23,7 @@ import Resonance from './sims/Resonance'
 import LorentzForce from './sims/LorentzForce'
 import ElectricField from './sims/ElectricField'
 import RadioactiveDecay from './sims/RadioactiveDecay'
+import { trackPageView } from './analytics'
 
 interface PageDef {
   id: string
@@ -233,6 +234,12 @@ const CATEGORIES = [
   '자유 놀이',
 ]
 
+const HOME_TITLE = '물리 놀이터 — 만지면서 배우는 물리 법칙'
+
+function getPageTitle(page: PageDef | null) {
+  return page ? `${page.title} — 물리 놀이터` : HOME_TITLE
+}
+
 function useHashRoute() {
   const [hash, setHash] = useState(window.location.hash)
   useEffect(() => {
@@ -327,8 +334,11 @@ export default function App() {
   const page = idx >= 0 ? PAGES[idx] : null
 
   useEffect(() => {
+    const title = getPageTitle(page)
+    document.title = title
     window.scrollTo(0, 0)
-  }, [route])
+    trackPageView(title)
+  }, [route, page])
 
   if (!page) return <Home />
 

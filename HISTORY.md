@@ -179,3 +179,15 @@
 ### 현재 상태
 
 23개 실험 / 10개 카테고리.
+
+## 2026-07-05 — Google Analytics 연결
+
+- GA4 Measurement ID를 코드에 직접 넣지 않고 `VITE_GA_MEASUREMENT_ID` 환경변수로 주입
+- ID가 없으면 스크립트를 아예 로드하지 않아 로컬 개발과 공개 빌드가 조용히 동작
+- 해시 라우팅 사이트라 첫 진입뿐 아니라 `#/실험id` 변경마다 `page_view`를 수동 전송
+- GitHub Actions 빌드 단계에서 repository variable 또는 secret 값을 Vite 환경변수로 전달
+
+### 현재 상태
+
+코드는 GA4 준비 완료. 실제 운영 측정은 GitHub Actions 변수
+`VITE_GA_MEASUREMENT_ID=G-...`를 설정한 뒤 다음 배포부터 켜진다.

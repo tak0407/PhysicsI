@@ -29,6 +29,8 @@
       Twitter 카드, `favicon.svg`, `og-image.png` 공유 썸네일 추가
 - [x] 2026-07-04 **홈 검색** — 실험 20개 넘으면. PAGES의 title/desc/category 대상
       간단 필터, 결과 수와 빈 결과 상태 포함
+- [x] 2026-07-05 **Google Analytics 연결** — `VITE_GA_MEASUREMENT_ID`가 있을 때만
+      GA4 gtag.js 로드, 해시 라우트 변경마다 page_view 전송
 
 ## 백로그 (아이디어, 순서 미정)
 
@@ -93,3 +95,5 @@
       검색 초기화와 빈 결과 상태
 - [x] 2026-07-04 — 방사성 붕괴와 반감기 추가: 확률적 개별 붕괴 vs 지수 감소 곡선,
       이론 곡선·T½ 눈금 비교 — 23개 실험 / 10개 카테고리
+- [x] 2026-07-05 — Google Analytics 연결: 환경변수 기반 GA4 gtag.js 로드,
+      해시 라우팅 page_view 추적, GitHub Actions 빌드 변수 주입
